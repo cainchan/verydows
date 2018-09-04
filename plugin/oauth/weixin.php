@@ -6,19 +6,20 @@
 class weixin extends abstract_oauth
 {
     private $_api = 'https://api.weixin.qq.com';
+    private $_open_url = 'https://open.weixin.qq.com';
     
     public function create_login_url($state)
     {
         $params = array
         (
             'response_type' => 'code',
-            'client_id' => $this->config['app_id'],
+            'appid' => $this->config['app_id'],
             'redirect_uri' => baseurl().'/api/oauth/callback/weixin',
             'state' => $this->set_session('STATE', $state),
-            'scope' => 'get_user_info',
+            'scope' => 'snsapi_userinfo',
         );
         if($this->device == 'mobile') $params['display'] = 'mobile';
-        return $this->_api.'/sns/oauth2/access_token?'.http_build_query($params);
+        return $this->_open_url.'/connect/qrconnect?'.http_build_query($params);
     }
     
     public function check_callback($args)
@@ -28,14 +29,14 @@ class weixin extends abstract_oauth
         $params = array
         (
             'grant_type' => 'authorization_code',
-            'client_id' => $this->config['app_id'],
+            'appid' => $this->config['app_id'],
             'redirect_uri' => baseurl().'/api/oauth/callback/weixin',
             'client_secret' => $this->config['app_key'],
-            'scope' => 'get_user_info',
+            'scope' => 'snsapi_userinfo',
             'code' => $args['code'],
         );
         
-        $uri = $this->_api.'/oauth2.0/token?'.http_build_query($params);
+        $uri = $this->_open_url.'/connect/qrconnect?'.http_build_query($params);
         if($str = file_get_contents($uri))
         {
             if(strpos($str, 'callback') !== FALSE)
@@ -80,16 +81,16 @@ class weixin extends abstract_oauth
             'format' => 'json',
         );
         
-        $uri = $this->_api.'/user/get_user_info?'.http_build_query($params);
+        $uri = $this->_api.'/sns/userinfo?'.http_build_query($params);
         if($res = file_get_contents($uri))
         {
             $res = json_decode($res, TRUE);
-            if($res['gender'] == '男') $res['gender'] = 1; elseif($res['gender'] == '女') $res['gender'] = 2; else $res['gender'] = 0;
+            if($res['sex'] == '男') $res['sex'] = 1; elseif($res['sex'] == '女') $res['sex'] = 2; else $res['sex'] = 0;
             return array
             (
                 'nickname' => $res['nickname'],
-                'gender' => $res['gender'],
-                'avatar' => $res['figureurl_qq_2'],
+                'gender' => $res['sex'],
+                'avatar' => $res['headimgurl'],
             );
         }
         return FALSE;
