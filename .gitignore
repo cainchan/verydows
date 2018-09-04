@@ -5,3 +5,4 @@
 /protected/config.php
 /protected/cache
 /protected/view/adv
+sftp-config.json
