@@ -57,5 +57,4 @@ class oauth_controller extends general_controller
         }
         echo json_encode($res);
     }
-
 }

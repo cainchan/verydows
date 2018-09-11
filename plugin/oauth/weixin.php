@@ -95,4 +95,24 @@ class weixin extends abstract_oauth
         }
         return FALSE;
     }
+    public function check_signature($args)
+    {
+        //获取微信服务器传过来的signature、token、nonce和timestamp
+        $token = "kaychen"; //这是我自己设置的token值
+        $timestamp = $args['timestamp'];
+        $nonce = $args['nonce'];
+        $signature = $args['signature'];
+        //对token、nonce和timestamp按字典序排序
+        $tmpArr = array($token, $nonce, $timestamp);
+        sort($tmpArr,SORT_STRING);
+        $tmpStr = implode( $tmpArr );
+        $tmpStr = sha1( $tmpStr );
+
+        //与singnature进行对比校验
+        if($tmpStr == $signature){
+            return true;
+        } else {
+            return false;
+        }       
+    }
 }

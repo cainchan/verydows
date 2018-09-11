@@ -37,4 +37,21 @@ class oauth_controller extends general_controller
             jump(url('main', '404'));
         }
     }
+    public function action_verify()
+    {
+        file_put_contents('wxapi.txt', json_encode($_GET));
+        if (empty($_GET['timestamp']) ||
+            empty($_GET['signature']) ||
+            empty($_GET['nonce'])
+        ){
+            echo 'no data';die;
+        }
+
+        $args = $_GET;
+        $weixin_api = plugin::instance('oauth','weixin',NULL,TRUE);
+        $echostr = isset($args['echostr']) ? $args['echostr'] : '';
+        if($weixin_api->check_signature($args) && $echostr){
+            echo $echostr; //输出微信服务器传过来的验证通过的字符串
+        }
+    }
 }
