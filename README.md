@@ -57,3 +57,14 @@
 * QQ：150526401
 
 * QQ讨论交流群：372701906
+
+#### 变动
+* user表增加openid
+```sql
+ALTER TABLE `verydows`.`user`   
+  ADD COLUMN `openid` VARCHAR(50) DEFAULT '' NOT NULL AFTER `user_id`,
+  CHANGE `username` `username` VARCHAR(50) CHARSET utf8 COLLATE utf8_general_ci DEFAULT '' NOT NULL, 
+  ADD  KEY `openid` (`openid`);
+ALTER TABLE `verydows`.`user`   
+  CHANGE `avatar` `avatar` VARCHAR(200) CHARSET utf8 COLLATE utf8_general_ci DEFAULT '' NOT NULL;
+```

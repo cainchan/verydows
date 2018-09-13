@@ -167,4 +167,19 @@ class user_model extends Model
         setcookie('USER_AVATAR', null, $overtime, '/');
         setcookie('USER_STAYED', null, $overtime, '/');
     }
+    public function weixin_login($args){
+        $user = $this->find(array('openid' => $args['openid']));
+        if (empty($user)){
+            $data = array(
+                'openid' => $args['openid'],
+                'username' => trim($args['nickname']),
+                'avatar' => $args['headimgurl'],
+                'password' => '123456',
+            );
+            $this->register($data);
+            $user = $this->find(array('openid' => $args['openid']));
+        }
+        $this->stay_login($user['user_id'], $user['password'], get_ip());
+        $this->set_logined_info(get_ip(), $user['user_id'], $user['username'], $user['avatar']);
+    }
 }

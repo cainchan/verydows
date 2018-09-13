@@ -56,7 +56,7 @@
     }
   </script>
   <dl class="fedit avatar center cut" id="avatar">
-    <dt class="center"><span class="xauto"><img src="<{if !empty($avatar)}><{$common.baseurl}>/upload/user/avatar/<{$avatar}><{else}><{$common.baseurl}>/public/image/noavatar_m.gif<{/if}>" /></span></dt>
+    <dt class="center"><span class="xauto"><img src="<{if !empty($avatar)}><{if(strstr($user.avatar,'http'))}><{$user.avatar}><{else}><{$common.baseurl}>/upload/user/avatar/<{$avatar}><{/if}><{else}><{$common.baseurl}>/public/image/noavatar_m.gif<{/if}>" /></span></dt>
     <dd class="split"></dd>
     <dd class="mt20"><a class="f14 skbtn xauto" onclick="changeAvatar()">选 择</a></dd>
     <input id="avatarfile" class="hide" type="file" accept="image/*;capture=camera" />

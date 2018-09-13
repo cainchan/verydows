@@ -19,7 +19,7 @@
     <a class="avatar" href="<{url c='mobile/user' a='info' field='avatar'}>">
       <h3 class="fl">头像</h3>
       <i class="fr iconfont">&#xe66f;</i>
-      <span class="fr"><img src="<{if !empty($user.avatar)}><{$common.baseurl}>/upload/user/avatar/<{$user.avatar}><{else}><{$common.baseurl}>/public/image/noavatar_m.gif<{/if}>" /></span>
+      <span class="fr"><img src="<{if !empty($user.avatar)}><{if(strstr($user.avatar,'http'))}><{$user.avatar}><{else}><{$common.baseurl}>/upload/user/avatar/<{$user.avatar}><{/if}><{else}><{$common.baseurl}>/public/image/noavatar_m.gif<{/if}>" /></span>
     </a>
     <a href="<{url c='mobile/user' a='info' field='email'}>">
       <h3 class="fl">邮箱</h3>

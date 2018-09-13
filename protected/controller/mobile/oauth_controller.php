@@ -60,11 +60,11 @@ class oauth_controller extends general_controller
         $openid = $oauth2['openid'];  
         $get_user_info_url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token=$access_token&openid=$openid&lang=zh_CN";
         $userinfo = $this->getJson($get_user_info_url);
-         
         //打印用户信息
-          print_r($userinfo);
-         
-        
+        file_put_contents('userinfo.txt', json_encode($userinfo));
+        $user_model = new user_model();
+        $user_model->weixin_login($userinfo);
+        jump(url('mobile/user', 'index'));
     }
     public function getJson($url){
         $ch = curl_init();
