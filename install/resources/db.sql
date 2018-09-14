@@ -696,17 +696,19 @@ INSERT INTO `#tablepre#shipping_method` VALUES ('1', '普通快递', '{\"0\":{\"
 DROP TABLE IF EXISTS `#tablepre#user`;
 CREATE TABLE `#tablepre#user` (
   `user_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `username` char(16) NOT NULL DEFAULT '',
+  `openid` varchar(50) NOT NULL DEFAULT '',
+  `username` varchar(50) NOT NULL DEFAULT '',
   `password` char(32) NOT NULL DEFAULT '',
   `email` varchar(60) NOT NULL DEFAULT '',
   `mobile` char(11) NOT NULL DEFAULT '',
-  `avatar` varchar(50) NOT NULL DEFAULT '',
+  `avatar` varchar(200) NOT NULL DEFAULT '',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `email_status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `mobile_status` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`),
-  KEY `email` (`email`)
+  KEY `email` (`email`),
+  KEY `openid` (`openid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
