@@ -110,7 +110,7 @@ $(function(){
     <tr><th>总营收额</th><td><b>{@if revenue != null}${revenue}{@else}0.00{@/if}</b>元</td></tr>
     <tr><th>注册用户</th><td><b>${user}</b>个</td></tr>
     <tr><th>商品总数</th><td><b>${goods}</b>个</td></tr>
-    <tr><th>广告总数</th><td><b>${adv}</b>条</td></tr>
+    <!-- <tr><th>广告总数</th><td><b>${adv}</b>条</td></tr> -->
     <tr><th>资讯总数</th><td><b>${article}</b>条</td></tr>
   </table>
 </script>
@@ -130,22 +130,16 @@ $(function(){
     <tr><th>待处理售后</th><td><b>${aftersales}</b>个</td></tr>
     <tr><th>待审核评价</th><td><b>${review}</b>条</td></tr>
     <tr><th>待回复反馈</th><td><b>${feedback}</b>个</td></tr>
-    <tr><th>到期广告</th><td><b>${adv}</b>条</td></tr>
-    <tr><th>待确认订阅</th><td><b>${subscription}</b>个</td></tr>
+    <!-- <tr><th>到期广告</th><td><b>${adv}</b>条</td></tr> 
+    <tr><th>待确认订阅</th><td><b>${subscription}</b>个</td></tr> -->
   </table>
 </script>
 <script type="text/template" id="sysinfo-tpl">
   <table class="dataform">
     <tr>
-      <th width="13%">程序版本</th>
-      <td width="33%">${vds_version}</td>
-      <th width="13%">服务器 IP</th>
-      <td>${server_ip}</td>
-    </tr>
-    <tr>
-      <th>服务器操作系统</th>
-      <td>${server_os}</td>
-      <th>服务器软件</th>
+      <th width="13%">服务器操作系统</th>
+      <td width="33%">${server_os}</td>
+      <th width="13%">服务器软件</th>
       <td>${server_soft}</td>
     </tr>
     <tr>
