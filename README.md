@@ -67,4 +67,6 @@ ALTER TABLE `verydows`.`user`
   ADD  KEY `openid` (`openid`);
 ALTER TABLE `verydows`.`user`   
   CHANGE `avatar` `avatar` VARCHAR(200) CHARSET utf8 COLLATE utf8_general_ci DEFAULT '' NOT NULL;
+
+INSERT INTO weshop_oauth (party,`name`,params,instruction,`enable`) VALUES('weixin','微信','{"app_id":"","app_secret":""}','微信公众号',1);
 ```
