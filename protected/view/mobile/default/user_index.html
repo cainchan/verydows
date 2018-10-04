@@ -39,8 +39,6 @@ function logout(){
           <dd class="mt5"><font class="f14"><{$user.username}></font><span class="ml10 dim"><{$account.group_name}></span></dd>
           <dd class="mt5">
             <font class="dim">账户余额：</font><b><{$account.balance}> 元</b>
-            <span class="sep5"></span>
-            <font class="dim">积分：</font><b><{$account.points}></b>
           </dd>
         </dl>
       </div>
@@ -79,9 +77,6 @@ function logout(){
     <a class="helper row" href="<{url c='mobile/help' a='index'}>">
       <span class="fl"><i class="iconfont">&#xe640;</i><font class="f14">帮助中心</font></span>
       <span class="fr"><i class="iconfont">&#xe614;</i></span>
-    </a>
-    <a class="logout row" onclick="logout()">
-      <span class="fl"><i class="iconfont">&#xe63d;</i><font class="f14">退出登录</font></span>
     </a>
   </div>
 </div>

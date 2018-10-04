@@ -29,7 +29,11 @@
             <th>头像</th>
             <td>
               <{if !empty($user.avatar)}>
-              <img width="40" height="40" src="<{$baseurl}>/upload/user/avatar/<{$user.avatar}>" />
+                <{if strstr($user.avatar,'http')}>
+                <img width="40" height="40" src="<{$user.avatar}>" />
+                <{else}>
+                <img width="40" height="40" src="<{$baseurl}>/upload/user/avatar/<{$user.avatar}>" />
+                <{/if}>
               <{else}>
               <font class="c999">未设置</font>
               <{/if}>
@@ -68,7 +72,7 @@
           <tr>
             <td colspan="4">
               <div class="pad10 ta-c">
-                <a class="cbtn sm btn" onclick="popResetPwd()">重设密码</a><span class="sep20"></span>
+                <!-- <a class="cbtn sm btn" onclick="popResetPwd()">重设密码</a><span class="sep20"></span> -->
                 <a class="cbtn sm btn" onclick="popRevise()">调整账户数据</a><span class="sep20"></span>
                 <a class="cbtn sm btn" href="<{url m=$MOD c='user' a='view' step='order' id=$user.user_id}>">订单记录</a><span class="sep20"></span>
                 <a class="cbtn sm btn" href="<{url m=$MOD c='user' a='view' step='account' id=$user.user_id}>">账户记录</a><span class="sep20"></span>

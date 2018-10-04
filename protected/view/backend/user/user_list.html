@@ -56,10 +56,8 @@ function pageturn(page_id){searchRes(page_id);}
   <tr>
     <th width="60" colspan="2">编号</th>
     <th class="ta-l">用户名</th>
-    <th class="ta-l">邮箱</th>
     <th width="130">注册时间</th>
     <th width="130">最后登录时间</th>
-    <th width="120">邮箱认证</th>
     <th width="120">用户状态</th>
   </tr>
   {@each list as v}
@@ -67,10 +65,8 @@ function pageturn(page_id){searchRes(page_id);}
     <td width="20"><input name="id" type="checkbox" value="${v.user_id}" /></td>
     <td width="40">${v.user_id}</td>
     <td class="ta-l"><a class="blue" href="index.php?m=<{$MOD}>&c=user&a=view&id=${v.user_id}">${v.username}</a></td>
-    <td class="ta-l">${v.email}</td>
     <td class="c888">$${v.created_date|format_date}</td>
     <td class="c888">$${v.last_date|format_date}</td>
-    <td>{@if v.email_status == 1}<i class="icon yes"></i>{@else}<i class="icon no"></i>{@/if}</td>
     <td>{@if v.status == 0}<font class="green">正常</font>{@else}<font class="red">限制</font>{@/if}</td>
   </tr>
   {@/each}
