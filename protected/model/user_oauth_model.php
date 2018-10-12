@@ -18,7 +18,7 @@ class user_oauth_model extends Model
         {
             $res = array_pop($res);
             $user_model = new user_model();
-            $user_model->set_logined_info(get_ip(), $res['user_id'], $res['username'], $res['avatar']);
+            $user_model->set_logined_info(get_ip(), $res['user_id'], $res['username'], $res['avatar'],$res['openid']);
             unset($_SESSION['OAUTH']);
             return TRUE;
         }

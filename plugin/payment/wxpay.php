@@ -4,11 +4,49 @@
  * @author Cigery
  * Unfinished
  */
+use Yansongda\Pay\Pay;
+use Yansongda\Pay\Log;
+
 class wxpay extends abstract_payment
 {
+    private $_api = 'https://api.weixin.qq.com';
+    private $_open_url = 'https://open.weixin.qq.com';
     public function create_pay_url($args)
     {
-        //unfinished
+        $params = array
+        (
+            'response_type' => 'code',
+            'appid' => $this->config['app_id'],
+            'redirect_uri' => baseurl().'/index.php?m=mobile&c=wxpay&order_id='.$args['order_id'],
+            'state' => 1,
+            'scope' => 'snsapi_base',
+            'connect_redirect' => 1
+        );
+        if($this->device == 'mobile') $params['display'] = 'mobile';
+        return $this->_open_url.'/connect/oauth2/authorize?'.http_build_query($params).'#wechat_redirect';
+    }
+    public function _get_config(){
+        return $this->config;
+    }
+    public function response($args){
+        $order_model = new order_model();
+        $this->order = $order_model->find(array('order_id' => $args['order_id']));
+        $this->config['notify_url'] = $this->baseurl. '/api/pay/notify/wxpay';
+        $order = [
+            'out_trade_no' => $args['order_id'],
+            'total_fee' => intval($this->order['order_amount']*100), // **单位：分**
+            'body' => "{$GLOBALS['cfg']['site_name']}订单-{$args['order_id']}",
+            'openid' => $_SESSION['USER']['OPEN_ID'],
+        ];
+
+        $pay = Pay::wechat($this->config)->mp($order);
+        file_put_contents('response', json_encode($pay));
+        // $pay->appId
+        // $pay->timeStamp
+        // $pay->nonceStr
+        // $pay->package
+        // $pay->signType
+
     }
     
     public function set_js_params($args)

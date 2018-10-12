@@ -106,7 +106,7 @@ class user_model extends Model
                 {
                     if(md5($ip.substr($user['password'], 6, 24)) == substr($cookie, 0, 32))
                     {
-                        $this->set_logined_info($ip, $user['user_id'], $user['username'], $user['avatar']);
+                        $this->set_logined_info($ip, $user['user_id'], $user['username'], $user['avatar'],$user['openid']);
                         return TRUE;
                     }
                 }
@@ -118,12 +118,13 @@ class user_model extends Model
     /**
      * 设置登录后信息
      */
-    public function set_logined_info($ip, $user_id, $username, $avatar = '')
+    public function set_logined_info($ip, $user_id, $username, $avatar = '',$open_id='')
     {
         $record_model = new user_record_model();
         $rec = $record_model->find(array('user_id' => $user_id));
         $record_model->update(array('user_id' => $user_id), array('last_date' => $_SERVER['REQUEST_TIME'], 'last_ip' => $ip));
         $_SESSION['USER']['USER_ID'] = $user_id;
+        $_SESSION['USER']['OPEN_ID'] = $open_id;
         $_SESSION['USER']['LAST_DATE'] = $rec['last_date'];
         $_SESSION['USER']['LAST_IP'] = $rec['last_ip'];
         setcookie('LOGINED_USER', $username, null, '/');
@@ -180,6 +181,6 @@ class user_model extends Model
             $user = $this->find(array('openid' => $args['openid']));
         }
         $this->stay_login($user['user_id'], $user['password'], get_ip());
-        $this->set_logined_info(get_ip(), $user['user_id'], $user['username'], $user['avatar']);
+        $this->set_logined_info(get_ip(), $user['user_id'], $user['username'], $user['avatar'],$user['openid']);
     }
 }

@@ -15,6 +15,7 @@ else
 }
 set_error_handler('_err_handle');
 require(INCL_DIR.DS.'functions.php');
+require(APP_DIR.DS.'vendor/autoload.php');
 
 if($GLOBALS['cfg']['rewrite_enable'] && strpos($_SERVER['REQUEST_URI'], 'index.php?') === FALSE)
 {

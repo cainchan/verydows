@@ -98,7 +98,7 @@ class user_controller extends general_controller
             if($user = $user_model->find(array('username' => $username, 'password' => $password)))
             {
                 if(request('stay')) $user_model->stay_login($user['user_id'], $user['password'], $client_ip);
-                $user_model->set_logined_info($client_ip, $user['user_id'], $user['username'], $user['avatar']);
+                $user_model->set_logined_info($client_ip, $user['user_id'], $user['username'], $user['avatar'],$user['openid']);
                 $redirect = isset($_SESSION['REDIRECT']) ? $_SESSION['REDIRECT'] : url('user', 'index');
                 unset($_SESSION['REDIRECT']);
                 $this->prompt('success', '登录成功', $redirect, 3);

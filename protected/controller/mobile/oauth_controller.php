@@ -49,11 +49,9 @@ class oauth_controller extends general_controller
         $redirect_uri = baseurl().'/index.php?m=mobile&c=oauth&a=get_user_info&jump='.$jump;//urlencode();
         // $url ="https://open.weixin.qq.com/connect/oauth2/authorize?appid=$appid&redirect_uri=$redirect_uri&response_type=code&scope=snsapi_base&state=1#wechat_redirect";
         $url = $this->oauth_obj->create_login_url($redirect_uri);
-        file_put_contents('url.txt', $url);
         header("Location:".$url);
     }
     public function action_get_user_info(){
-        file_put_contents('get.txt', json_encode($_GET));
         // $appid = $this->oauth_obj->config['app_id'];  
         // $secret = $this->oauth_obj->config['app_secret'];  
         $code = $_GET["code"];
@@ -74,7 +72,6 @@ class oauth_controller extends general_controller
         // $userinfo = $this->getJson($get_user_info_url);
         $userinfo = $this->oauth_obj->get_user_info($access_token,$openid);
         //打印用户信息
-        file_put_contents('userinfo.txt', json_encode($userinfo));
         $user_model = new user_model();
         $user_model->weixin_login($userinfo);
         if ($_GET["jump"] == 'index'){
