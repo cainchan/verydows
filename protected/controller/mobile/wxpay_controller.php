@@ -48,7 +48,7 @@ class wxpay_controller extends general_controller
         $this->order_url = baseurl().'/m/order/view.html?id='.$order_id;
         $this->pay = $pay;
         $this->status = 'success';
-        $this->message = '请尽快支付';
+        $this->message = '请完成支付';
         $this->compiler('paying.html');
     }
 
