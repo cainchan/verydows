@@ -440,8 +440,9 @@ CREATE TABLE `#tablepre#oauth` (
 -- ----------------------------
 -- Records of oauth
 -- ----------------------------
-INSERT INTO `#tablepre#oauth` VALUES ('qq', '腾讯QQ', '{\"app_id\":\"\",\"app_key\":\"\"}', 'QQ互联开放平台为第三方网站提供了丰富的API。第三方网站接入QQ互联开放平台后，即可通过调用平台提供的API实现用户使用QQ帐号登录网站功能，且可以获取到腾讯QQ用户的相关信息。', '1');
-INSERT INTO `#tablepre#oauth` VALUES ('weibo', '新浪微博', '{\"app_key\":\"\",\"app_secret\":\"\"}', '网站接入是微博针对第三方网站提供的社会化网络接入方案。接入微连接让您的网站支持用微博帐号登录，基于OAuth2.0协议，使用微博 Open API 进行开发， 即可用微博帐号登录你的网站， 让你的网站降低新用户注册成本，快速获取大量用户。', '1');
+INSERT INTO `#tablepre#oauth` VALUES ('qq', '腾讯QQ', '{\"app_id\":\"\",\"app_key\":\"\"}', 'QQ互联开放平台为第三方网站提供了丰富的API。第三方网站接入QQ互联开放平台后，即可通过调用平台提供的API实现用户使用QQ帐号登录网站功能，且可以获取到腾讯QQ用户的相关信息。', '0');
+INSERT INTO `#tablepre#oauth` VALUES ('weibo', '新浪微博', '{\"app_key\":\"\",\"app_secret\":\"\"}', '网站接入是微博针对第三方网站提供的社会化网络接入方案。接入微连接让您的网站支持用微博帐号登录，基于OAuth2.0协议，使用微博 Open API 进行开发， 即可用微博帐号登录你的网站， 让你的网站降低新用户注册成本，快速获取大量用户。', '0');
+INSERT INTO `#tablepre#oauth` VALUES ('weixin', '腾讯微信', '{\"app_key\":\"\",\"app_secret\":\"\"}', '针对微信公众号提供的社会化网络接入方案。基于OAuth2.0协议，让你的网站降低新用户注册成本，快速获取大量用户。', '1');
 
 -- ----------------------------
 -- Table structure for `order`
@@ -565,7 +566,8 @@ CREATE TABLE `#tablepre#payment_method` (
 -- ----------------------------
 INSERT INTO `#tablepre#payment_method` VALUES ('1', '余额支付', '0', 'balance', '[\"\"]', '', '2', '1');
 INSERT INTO `#tablepre#payment_method` VALUES ('2', '货到付款', '1', 'cod', '[\"\"]', '', '3', '1');
-INSERT INTO `#tablepre#payment_method` VALUES ('3', '支付宝', '0', 'alipay', '{\"seller\":\"\",\"partner\":\"\",\"key\":\"\"}', '', '1', '1');
+INSERT INTO `#tablepre#payment_method` VALUES ('3', '支付宝', '0', 'alipay', '{\"seller\":\"\",\"partner\":\"\",\"key\":\"\"}', '', '1', '0');
+INSERT INTO `#tablepre#payment_method` VALUES ('4', '微信支付', '0', 'weixin', '{\"app_id\":\"\",\"app_secret\":\"\",\"key\":\"\",\"mch_id\":\"\"}', '', '0', '1');
 
 -- ----------------------------
 -- Table structure for `request_error`
