@@ -18,6 +18,8 @@
 
 * JS模板引擎：[Juicer](https://github.com/PaulGuo/Juicer) 0.6.8
 
+* 微信支付SDK: [pay](https://github.com/yansongda/pay.git) 2.5.0
+
 
 #### 运行环境
 
