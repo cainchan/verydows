@@ -1,5 +1,5 @@
 ```
-免费、开源、高效、安全的PHP B2C商城系统
+开源、高效、安全的PHP B2C商城系统
 ```
 ![intro](http://git.oschina.net/uploads/images/2016/1114/082205_d6678e5e_480212.jpeg)
 
