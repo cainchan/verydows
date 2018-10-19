@@ -28,7 +28,7 @@
 .impoper a.close:hover {background-position:-270px -140px;}
 .impoper .bom {padding:10px;background:#f6f6f6;border-top:1px solid #e9e9e9;}
 .impoper .bom button {word-spacing:5px;}
-.imul {width:500px;}
+.imul {width:1000px;}
 .imul .imuler {padding:20px 10px 30px 10px;}
 .imul .imulqu {display:table;height:auto;margin:0 auto;overflow:hidden}
 .imul .imulqu li {position:relative;float:left;width:100px;height:100px;margin:0 10px;border:1px dotted #e5e5e5;vertical-align:middle;overflow:hidden;}
