@@ -19,7 +19,6 @@ switch($step)
 {
     case 1:
     
-        $license = check_license();
         include(INSTALL_DIR.DS.'template'.DS.'step_1.html');
     
     break;
